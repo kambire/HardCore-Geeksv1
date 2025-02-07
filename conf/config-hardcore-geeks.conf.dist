@@ -1,0 +1,106 @@
+# ==============================================================================
+#  ██░ ██ ▄▄▄█████▓ ██▀███   ▄████▄   ██▓███   ██▓ ▄▄▄     ▄▄▄█████▓
+# ▓██░ ██▒▓  ██▒ ▓▒▓██ ▒ ██▒▒██▀ ▀█  ▓██░  ██▒▓██▒▒████▄   ▓  ██▒ ▓▒
+# ▒██▀▀██░▒ ▓██░ ▒░▓██ ░▄█ ▒▒▓█    ▄ ▓██░ ██▓▒▒██▒▒██  ▀█▄ ▒ ▓██░ ▒░
+# ░▓█ ░██ ░ ▓██▓ ░ ▒██▀▀█▄  ▒▓▓▄ ▄██▒▒██▄█▓▒ ▒░██░░██▄▄▄▄██░ ▓██▓ ░ 
+# ░▓█▒░██▓  ▒██▒ ░ ░██▓ ▒██▒▒ ▓███▀ ░▒██▒ ░  ░░██░ ▓█   ▓██▒ ▒██▒ ░ 
+#  ▒ ░░▒░▒  ▒ ░░   ░ ▒▓ ░▒▓░░ ░▒ ▒  ░▒▓▒░ ░  ░░▓   ▒▒   ▓▒█░ ▒ ░░   
+#  ▒ ░▒░ ░    ░      ░▒ ░ ▒░  ░  ▒   ░▒ ░      ▒ ░  ▒   ▒▒ ░   ░    
+#  ░  ░░ ░  ░        ░░   ░ ░        ░░        ▒ ░  ░   ▒    ░      
+#  ░  ░  ░            ░     ░ ░                ░        ░  ░       
+#                          ░                                         
+#                  H A R D C O R E   G E E K S   C O N F I G                    
+# ==============================================================================
+
+[HardcoreGeeks]
+# ------------------------------------------------------------------------------
+# CONFIGURACIÓN BÁSICA
+# ------------------------------------------------------------------------------
+; ¿Habilitar el modo Hardcore Geeks?
+; Tipo: Boolean (0 = Desactivado, 1 = Activado)
+; Ejemplo: Enable = 1
+Enable = 1
+
+; Número máximo de muertes permitidas antes de la eliminación permanente
+; Tipo: Entero (1-255)
+; Recomendado: 3-5 para verdadero desafío
+MaxDeaths = 3
+
+# ------------------------------------------------------------------------------
+# AJUSTES DE EXPERIENCIA
+# ------------------------------------------------------------------------------
+; Multiplicador de experiencia (1.0 = 100% normal, 0.5 = 50%, 2.0 = 200%)
+; Tipo: Float
+; Efecto dramático: 0.25 | Desafío balanceado: 0.5 | Modo fácil: 1.0
+XPRate = 0.25
+
+; Aplicar modificador de experiencia a jugadores en modo Hardcore
+; Tipo: Boolean
+; Nota: Desactivar si usas otros sistemas de experiencia
+ApplyXPModifier = 1
+
+# ------------------------------------------------------------------------------
+# PENALIZACIONES POR MUERTE
+# ------------------------------------------------------------------------------
+; ID del efecto visual de fantasma (8326 = Classic Ghost)
+; Tip: Usar 9036 para efecto más moderno, 26013 para fantasma sangriento
+GhostAura = 8326
+
+; Bloquear interacción con NPCs después de muerte permanente
+; Tipo: Boolean
+; Efecto: Los jugadores no podrán comerciar, usar bancos o hablar con NPCs
+DisableNPCInteraction = 1
+
+; Permitir usar el chat después de muerte permanente
+; Tipo: Boolean
+; Seguridad: 0 = Bloquear completamente, 1 = Permitir comunicación
+AllowChat = 1
+
+# ------------------------------------------------------------------------------
+# NOTIFICACIONES Y MENSAJES
+# ------------------------------------------------------------------------------
+; Anunciar muertes permanentes a todo el servidor
+; Tipo: Boolean
+; Impacto: 1 = Mensaje global, 0 = Solo notificación privada
+BroadcastDeaths = 1
+
+; Color RGB para mensajes del sistema (formato: "R G B")
+; Ejemplos: Rojo = "255 0 0", Verde = "0 255 0", Morado = "128 0 128"
+MessageColor = "255 0 0"
+
+; Mensaje de muerte permanente (usa %s para nombre del jugador)
+; Formato: |cFFAARRGGBB (código hexadecimal de color)
+; Tip: Usar efectos con |H como |cFFFF0000¡ALERTA!|r |Hachievement:1234|h[Logro]|h
+DeathMessage = "|cFFFF0000¡%s ha sido eliminado permanentemente del modo Hardcore ESPyGames!|r"
+
+# ------------------------------------------------------------------------------
+# CONFIGURACIÓN AVANZADA
+# ------------------------------------------------------------------------------
+; Permitir a GMs resucitar jugadores con muerte permanente
+; Tipo: Boolean
+; Seguridad: Recomendado 1 para mantenimiento
+AllowGMResurrect = 1
+
+; Ignorar jugadores con rango GM en el sistema Hardcore
+; Tipo: Boolean
+; Importante: 1 = GMs no afectados, 0 = GMs bajo reglas Hardcore
+IgnoreGMs = 1
+
+; Aplicar reglas a todas las clases (incluyendo Death Knights)
+; Tipo: Boolean
+; Balance: 1 = Todos bajo mismas reglas, 0 = Excluir clases especiales
+ApplyToAllClasses = 1
+
+# ==============================================================================
+# EJEMPLOS DE USO AVANZADO:
+#
+# Modo Extremo (1 vida, 10% XP):
+# MaxDeaths = 1
+# XPRate = 0.1
+# MessageColor = "255 40 0"  # Rojo llameante
+#
+# Modo Fantasmal (Chat habilitado):
+# AllowChat = 1
+# GhostAura = 26013          # Fantasma espectral
+# DeathMessage = "|cFF00FFFF¡%s se ha convertido en un espectro eterno!|r"
+# ==============================================================================
