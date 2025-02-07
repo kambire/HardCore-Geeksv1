@@ -34,15 +34,9 @@ git clone https://github.com/tu-usuario/hardcore-geeks.git modules/hardcore-geek
 
     Importa la estructura SQL:
 
-sql
-Copy
-
 # Usar el archivo: modules/hardcore-geeks/sql/custom/character_hardcore.sql
 
     Recompila el core:
-
-bash
-Copy
 
 mkdir build && cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DSCRIPTS="hardcore-geeks"
@@ -51,8 +45,6 @@ make install
 
     Configura en worldserver.conf:
 
-ini
-Copy
 
 [HardcoreGeeks]
 Enable = 1
@@ -68,8 +60,6 @@ DeathMessage	Texto con %s	Mensaje de muerte global personalizado
 DisableNPCInteraction	0/1	Bloquear comercio con NPCs
 
 Ejemplo de Configuración Extrema:
-ini
-Copy
 
 [HardcoreGeeks]
 Enable = 1
@@ -80,8 +70,6 @@ DeathMessage = "|cFFFFA500¡EL IMPLACABLE %s HA CAÍDO EN BATALLA!|r"
 ❓ FAQ
 
 Q: ¿Cómo resetear las muertes de un jugador?
-sql
-Copy
 
 UPDATE character_hardcore SET deaths = 0, permanent_death = 0 WHERE guid = [CHARACTER_GUID];
 
@@ -112,7 +100,6 @@ MIT License - Ver LICENSE para detalles
 ¡Haz tu servidor legendario con el módulo que está revolucionando el WoW privado!
 
 ⭐ ¡Dale una estrella en GitHub si te gusta el proyecto!
-Copy
 
 
 Este README incluye:  
