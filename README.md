@@ -1,113 +1,92 @@
-markdown
-Copy
+# **hardcore-geeks - Hardcore Mode for AzerothCore**
 
-# 🎮 Hardcore Geeks - AzerothCore Module 🔥  
-**¡La experiencia definitiva para jugadores que aman el desafío!**  
+![AzerothCore](https://img.shields.io/badge/AzerothCore-3.3.5-blue)  
+![License](https://img.shields.io/badge/License-MIT-green)  
 
-![AzerothCore Compatible](https://img.shields.io/badge/AzerothCore-3.3.5-blue) 
-![License: MIT](https://img.shields.io/badge/License-MIT-green) 
-![GitHub Release](https://img.shields.io/badge/Version-1.0.0-red)
+The **hardcore-geeks** module introduces a hardcore mode to your AzerothCore server. Players start with a limited number of revives and can purchase additional revives with in-game gold.
 
-## 📜 Descripción  
-Un módulo revolucionario que transforma tu servidor WoW en una experiencia Hardcore extrema con:  
-✅ Sistema de vidas limitadas  
-✅ Multiplicadores de XP personalizables  
-✅ Muerte permanente con consecuencias reales  
-✅ Completo sistema anti-cheat integrado  
+---
 
-![Hardcore Geeks Preview](https://via.placeholder.com/800x400.png?text=Hardcore+Geeks+Gameplay+Preview)
+## **Features**
+- **Limited Revives**: Players start with a configurable number of revives.
+- **Revive Purchases**: Players can buy additional revives with gold.
+- **Customizable Messages**: Configure death and revive messages.
+- **Easy Configuration**: Modify settings via a `.conf` file.
 
-## ✨ Características Principales  
-| Función                  | Descripción                                                                 |
-|--------------------------|-----------------------------------------------------------------------------|
-| 🎯 **Vidas Limitadas**    | 3 muertes máximas (configurable) antes de bloqueo permanente               |
-| ⚡ **XP Personalizado**   | Multiplicador de experiencia desde 0.1x hasta 5x                           |
-| 💀 **Muerte Definitiva**  | Conversión a fantasma con restricciones de juego completas                  |
-| 📢 **Sistema de Alertas** | Mensajes globales personalizables con códigos de color RGB                  |
-| 🛡️ **Modo GM Seguro**     | Herramientas especiales para Game Masters sin afectar el balance del juego  |
-| 🔒 **Protección Total**   | Bloqueo de resurrecciones, comercio y uso de objetos en estado de muerte    |
+---
 
-## 🛠️ Instalación  
-1. Clona el repositorio en tu carpeta de módulos:
+## **Installation**
+
+### 1. Clone the Module
+Clone this repository into your `modules` directory:
 ```bash
-git clone https://github.com/tu-usuario/hardcore-geeks.git modules/hardcore-geeks
+cd path/to/azerothcore/modules
+git clone https://github.com/yourusername/hardcore-geeks.git
+```
 
-    Importa la estructura SQL:
+### 2. Import Configuration
+Copy the configuration file to your server's `etc` directory:
+```bash
+cp modules/hardcore-geeks/conf/hardcore-geeks.conf.dist etc/worldserver.conf.d/hardcore-geeks.conf
+```
 
-# Usar el archivo: modules/hardcore-geeks/sql/custom/character_hardcore.sql
-
-    Recompila el core:
-
-mkdir build && cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DSCRIPTS="hardcore-geeks"
+### 3. Recompile the Core
+Recompile AzerothCore to include the new module:
+```bash
+cd path/to/azerothcore/build
+rm -rf *
+cmake ..
 make -j$(nproc)
-make install
+```
 
-    Configura en worldserver.conf:
+---
 
+## **Configuration**
+Edit the configuration file (`etc/worldserver.conf.d/hardcore-geeks.conf`) to customize the module:
 
-[HardcoreGeeks]
-Enable = 1
-MaxDeaths = 3
-XPRate = 0.25
-# ... (Ver config-hardcore-geeks.conf.dist para todas las opciones)
+```ini
+[hardcore-geeks]
+# Initial number of revives
+InitialRevives = 3
 
-⚙️ Configuración Avanzada
-Clave	Valores	Descripción
-GhostAura	ID de hechizo	Personaliza el efecto visual del fantasma
-MessageColor	"R G B"	Color RGB para mensajes del sistema
-DeathMessage	Texto con %s	Mensaje de muerte global personalizado
-DisableNPCInteraction	0/1	Bloquear comercio con NPCs
+# Cost to purchase additional revives (in gold)
+ReviveCost = 100
 
-Ejemplo de Configuración Extrema:
+# Death message (use %u for revives left)
+DeathMessage = "You have %u revives left. Use .revive to buy more."
 
-[HardcoreGeeks]
-Enable = 1
-MaxDeaths = 1
-XPRate = 0.1
-DeathMessage = "|cFFFFA500¡EL IMPLACABLE %s HA CAÍDO EN BATALLA!|r"
+# No revives left message
+NoRevivesLeftMessage = "You have no revives left! Play carefully!"
 
-❓ FAQ
+# Revive purchased message (use %u for cost and revives left)
+RevivePurchasedMessage = "You have purchased a revive for %u gold. Revives left: %u."
+```
 
-Q: ¿Cómo resetear las muertes de un jugador?
+---
 
-UPDATE character_hardcore SET deaths = 0, permanent_death = 0 WHERE guid = [CHARACTER_GUID];
+## **Commands**
+- **.revive**: Purchase an additional revive (costs gold).
 
-Q: ¿Es compatible con otros módulos de clases?
-✅ Sí, configurar ApplyToAllClasses = 1 para mejor compatibilidad
+---
 
-Q: ¿Los GMs pueden saltarse las restricciones?
-✅ Sí, usando IgnoreGMs = 1 y AllowGMResurrect = 1
-🤝 Contribuir
+## **License**
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-¡Aceptamos Pull Requests! Sigue estos pasos:
+---
 
-    Haz fork del repositorio
+## **Credits**
+- Developed by **[Geeks Team]**.
+- [AzerothCore](https://www.azerothcore.org/) Framework.
 
-    Crea tu branch (git checkout -b feature/NewAwesomeFeature)
+---
 
-    Commit tus cambios (git commit -am 'Add some NewAwesomeFeature')
+## **Support**
+If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://github.com/kambire/hardcore-geeks).
 
-    Push al branch (git push origin feature/NewAwesomeFeature)
+---
 
-    Abre un Pull Request
+Enjoy your hardcore experience with **hardcore-geeks**! 🎮
 
-📄 Licencia
+---
 
-MIT License - Ver LICENSE para detalles
-
-⚠️ ¿Listo para el verdadero desafío?
-¡Haz tu servidor legendario con el módulo que está revolucionando el WoW privado!
-
-⭐ ¡Dale una estrella en GitHub si te gusta el proyecto!
-
-
-Este README incluye:  
-1. Diseño moderno con badges y tablas  
-2. Secciones claramente organizadas  
-3. Instrucciones detalladas de instalación  
-4. Ejemplos prácticos de configuración  
-5. FAQ para solución rápida de problemas  
-6. Sistema de contribución estándar  
-7. Compatibilidad con markdown de GitHub  
-8. Llamados a la acción visualmente atractivos
+¡Con esto, tu módulo estará listo para ser publicado y compartido con la comunidad! 😊
